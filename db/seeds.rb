@@ -33,6 +33,16 @@ require 'random_data'
    )
  end
 
+ 10.times do
+   SponsoredPost.create!(
+     topic:  topics.sample,
+     title:  RandomData.random_sentence,
+     body:   RandomData.random_paragraph,
+     price: 20
+   )
+ end
+ sponsored_posts = SponsoredPost.all
+
  Post.find_or_create_by(title:"Hi there", body:"this is the body")
 
  puts "Seed finished"
@@ -40,3 +50,4 @@ require 'random_data'
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Question.count} questions created"
+ puts "#{SponsoredPost.count} questions created"
