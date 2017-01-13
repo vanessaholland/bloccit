@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :advertisements
   resources :questions
+  resources :users, only: [:new, :create]
 
   get 'about' => 'welcome#about'
 
