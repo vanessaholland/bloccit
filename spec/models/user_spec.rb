@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'active_support/core_ext'
 
 RSpec.describe User, type: :model do
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
@@ -15,8 +16,12 @@ RSpec.describe User, type: :model do
      it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
      describe "attributes" do
-       it "should have name and email attributes" do
-         expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
+       it "should respond to name" do
+         expect(user).to respond_to(:name)
+       end
+
+       it "should respond to email" do
+         expect(user).to respond_to(:email)
        end
      end
 
@@ -33,4 +38,11 @@ RSpec.describe User, type: :model do
        end
     end
 
+    describe "user name formatted" do
+      it "should capitalize the user's name" do
+        user.name = "bloccit user"
+        user.save
+        expect(user.name).to eq "Bloccit User"
+      end
+    end
 end
