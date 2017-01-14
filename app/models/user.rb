@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts
+
   before_save { self.email = email.downcase if email.present? }
   before_save { self.name = name.titleize if name.present? }
 
