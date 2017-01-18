@@ -14,13 +14,13 @@ admin = User.create!(
    password: 'helloworld',
    role:     'admin'
  )
- 
+
  member = User.create!(
    name:     'Member User',
    email:    'member@example.com',
    password: 'helloworld'
  )
- 
+
   users = User.all
 
 15.times do
@@ -44,8 +44,9 @@ admin = User.create!(
 
  100.times do
    Comment.create!(
-     post: posts.sample,
-     body: RandomData.random_paragraph
+    user: users.sample,
+    post: posts.sample,
+    body: RandomData.random_paragraph
    )
  end
 
