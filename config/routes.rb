@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :advertisements
   resources :questions
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :posts, only: [] do
