@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts, except: [:index]
   end
-  resources :advertisements
   resources :questions
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
