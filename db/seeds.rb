@@ -8,11 +8,18 @@ require 'random_data'
    )
  end
 
-admin = User.create!(
+vanessa = User.create!(
    name:     'Admin User',
-   email:    'admin@example.com',
+   email:    'vanessaholland13@gmail.com',
    password: 'helloworld',
    role:     'admin'
+ )
+
+ admin = User.create!(
+    name:     'Admin User',
+    email:    'admin@example.com',
+    password: 'helloworld',
+    role:     'admin'
  )
 
  member = User.create!(
@@ -21,6 +28,12 @@ admin = User.create!(
    password: 'helloworld'
  )
 
+ moderator = User.create!(
+   name:     'Member User',
+   email:    'moderator@example.com',
+   password: 'helloworld'
+ )
+ 
   users = User.all
 
 15.times do
@@ -52,24 +65,6 @@ admin = User.create!(
    )
  end
 
- 100.times do
-   Question.create!(
-     title: RandomData.random_sentence,
-     body: RandomData.random_paragraph,
-     resolved: false
-   )
- end
-
- 10.times do
-   SponsoredPost.create!(
-     topic:  topics.sample,
-     title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph,
-     price: 20
-   )
- end
- sponsored_posts = SponsoredPost.all
-
  Post.find_or_create_by(title:"Hi there", body:"this is the body")
 
  puts "Seed finished"
@@ -77,6 +72,4 @@ admin = User.create!(
  puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
- puts "#{Question.count} questions created"
- puts "#{SponsoredPost.count} questions created"
  puts "#{Vote.count} votes created"
